@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Milkrunner::Application.config.secret_key_base = '968d360d042d48858fce48f89b6bc6e1c84e9ddd2a96253d7efa9a7baa0f2ff64acd40f6018faa4a77e87ebf0bb8b52829c8067ea707b78d7c9bf4144139084d'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join '.secret'
+  if File.exist? token_file
+    File.read(token_file).chomp
+  else
+    token = SecureRandom.hex 64
+    File.write(token_file, token)
+    token
+  end
+end
+
+Milkrunner::Application.config.secret_key_base = secure_token
+
+# Milkrunner::Application.config.secret_key_base = '968d360d042d48858fce48f89b6bc6e1c84e9ddd2a96253d7efa9a7baa0f2ff64acd40f6018faa4a77e87ebf0bb8b52829c8067ea707b78d7c9bf4144139084d'
