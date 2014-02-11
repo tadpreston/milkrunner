@@ -4,6 +4,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'unicorn', '4.8.2'
 gem 'pg', '0.17.1'
+gem "bootstrap-sass", "3.1.0.2"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
