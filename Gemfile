@@ -14,6 +14,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.1'
   gem 'childprocess', '0.4.0'
+  gem 'annotate', '2.6.1'
 end
 
 group :test do
