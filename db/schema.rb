@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211182442) do
+ActiveRecord::Schema.define(version: 20140212161413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "inventories", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -32,9 +42,11 @@ ActiveRecord::Schema.define(version: 20140211182442) do
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "properties"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["properties"], name: "users_properties", using: :gin
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
