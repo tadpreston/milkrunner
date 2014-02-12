@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Products</h1>
+  </div>
+  <% if can? :manage, Product %>
+    <div class="col-sm-6">
+      <%= link_to 'New Product', new_product_path, class: 'btn btn-primary pull-right' %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name, product %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+          <td>
+            <% if can? :manage, Product %>
+              <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-info' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

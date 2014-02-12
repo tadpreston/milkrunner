@@ -6,6 +6,8 @@ Milkrunner::Application.routes.draw do
   match '/help',  to: 'pages#help',   via: 'get'
   match '/about', to: 'pages#about',  via: 'get'
 
+  resources :products
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h1><%= @product.name %></h1>
+  </div>
+  <% if can? :manage, Product %>
+    <div class="col-sm-4">
+      <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary pull-right' %>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Description</label>
+      <div class="col-sm-8">
+        <p class="form-control-static"><%= @product.description %></p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Price</label>
+      <div class="col-sm-8">
+        <p class="form-control-static"><%= @product.price %></p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Quantity</label>
+      <div class="col-sm-8">
+        <p class="form-control-static"><%= @product.quantity %></p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Status</label>
+      <div class="col-sm-8">
+        <p class="form-control-static"><%= @product.status %></p>
+      </div>
+    </div>
+  </form>
+</div>
