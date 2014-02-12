@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
       self.properties = (properties || {}).merge(key => value)
     end
   end
+
+  def admin?
+    role == 'admin'
+  end
 end
