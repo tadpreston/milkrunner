@@ -22,9 +22,7 @@
 
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'About', about_path %></li>
-          <li><%= link_to 'Help', help_path %></li>
           <% if user_signed_in? %>
             <li class="dropdown">
               <%= link_to '#', data: { toggle: 'dropdown' }, class: 'dropdown-toggle' do %>
@@ -40,14 +38,10 @@
             <li><%= link_to 'Sign in', new_user_session_path %></li>
           <% end %>
         </ul>
-        <h3 class="text-muted">MilkRunner</h3>
+        <h3 class="text-success"><%= link_to 'MilkRunner', root_url, class: "text-success" %></h3>
       </div>
 
       <%= yield %>
-
-      <div class="footer">
-        <p>&copy; MilkRunner 2014</p>
-      </div>
 
     </div>
 
